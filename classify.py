@@ -24,8 +24,8 @@ def length(lyrics):
 
 def complex(lyrics):
     complexity = 0
-    for word in lyrics.split():
-        if word in ['']: #we need to split in lines instead of words and check metaphors, alliterations,etc
+    for word in lyrics.splitlines():
+        if word in ['is like','yo yo yo','uptown funk']: #we need to split in lines instead of words and check metaphors, alliterations,etc
             complexity +=1
 
     return complexity
