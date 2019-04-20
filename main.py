@@ -4,9 +4,14 @@ import classify
 import statistics
 
 def main(path):
-	length_list = []
-	for filename in os.listdir(path)[0:1]:
-		filepath = f"{path}/{filename}"
+	filename_list = []
+	for filename in os.listdir(path):
+		filename_list.append(filename)
+	filename_list.sort()
+
+	total_list = []
+	for name in filename_list:
+		filepath = f"{path}/{name}"
 		lyrics = load.extract_lyrics(filepath)
 		
 		kid_safe_index = classify.kid_safe(lyrics)
@@ -16,12 +21,12 @@ def main(path):
 		complexity_index = classify.complexity(lyrics)
 
 		song_classification = [kid_safe_index, love_index, mood_index, length_index, complexity_index]
-
-		print(song_classification)
-
-		#length_list.append(int(classify.length(lyrics)))
+		
+		total_list.append(song_classification)
 	
-	#print(max(length_list))
+	print(total_list[192])
+
+	#print(max(total_list))
 	#print(min(length_list))
 	#print(statistics.mean(length_list))
 

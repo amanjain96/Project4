@@ -1,10 +1,14 @@
 import re
+import textstat
 
 def song_id(filename):
+	pass
 	
 def song_artist(filename):
+	pass
 
 def song_title(filename):
+	pass
 
 def kid_safe(lyrics):
 	kid_count = 0
@@ -38,9 +42,4 @@ def length(lyrics):
 	return length_count
 
 def complexity(lyrics):
-	complexity_count = 0
-	for word in lyrics.splitlines():
-		if word in ['is like','yo yo yo','uptown funk']: #we need to split in lines instead of words and check metaphors, alliterations,etc
-			complexity_count +=1
-	
-	return complexity_count
+	return textstat.difficult_words(lyrics)
