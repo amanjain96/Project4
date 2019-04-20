@@ -6,7 +6,6 @@ def love(lyrics):
     
     return love_count
 
-
 def kid_safe(lyrics):
     kid_count = 0
     for word in lyrics.split():
