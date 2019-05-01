@@ -2,13 +2,24 @@ import re
 import textstat
 
 def song_id(filename):
-	pass
+	pattern = re.compile('(\S+)~(\S+)~(\S+)[.]')
+	match = pattern.match(filename)
+	song_id = match.group(1)
+	return song_id
 	
 def song_artist(filename):
-	pass
+	pattern = re.compile('(\S+)~(\S+)~(\S+)[.]')
+	match = pattern.match(filename)
+	artist_raw = match.group(2)
+	artist = artist_raw.replace('-', ' ')
+	return artist
 
 def song_title(filename):
-	pass
+	pattern = re.compile('(\S+)~(\S+)~(\S+)[.]')
+	match = pattern.match(filename)
+	title_raw = match.group(3)
+	title = title_raw.replace('-', ' ')
+	return title
 
 def kid_safe(lyrics):
 	kid_count = 0

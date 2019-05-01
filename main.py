@@ -2,6 +2,7 @@ import os
 import load
 import classify
 import statistics
+import json
 
 def main(path):
 	filename_list = []
@@ -14,21 +15,31 @@ def main(path):
 		filepath = f"{path}/{name}"
 		lyrics = load.extract_lyrics(filepath)
 		
+		song_id = classify.song_id(name)
+		artist = classify.song_artist(name)
+		title = classify.song_title(name)
 		kid_safe_index = classify.kid_safe(lyrics)
 		love_index = classify.love(lyrics)
 		mood_index = classify.mood(lyrics)
 		length_index = classify.length(lyrics)
 		complexity_index = classify.complexity(lyrics)
 
-		song_classification = [kid_safe_index, love_index, mood_index, length_index, complexity_index]
+		song_classification = {
+								'id': song_id,
+								'artist': artist,
+								'title': title,
+								'kid_safe': kid_safe_index,
+								'love': love_index,
+								'mood': mood_index,
+								'length': length_index,
+								'complexity': complexity_index
+		}
 		
 		total_list.append(song_classification)
 	
-	print(total_list[192])
+	classified_songs = {'characterizations': total_list[0:10]}
 
-	#print(max(total_list))
-	#print(min(length_list))
-	#print(statistics.mean(length_list))
+	print(json.dumps(classified_songs, indent=4))
 
 if __name__ == '__main__':
 	import argparse
