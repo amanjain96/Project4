@@ -1,10 +1,10 @@
-GROUP4 Porject on Song Classification Based on Lyrics
+GROUP4 Project on Song Classification Based on Lyrics
 
 This is an academic project as part of the course: Tools for Analytics under the guidance of Professor Paul Logston.
 
 SUMMARY:
-To create a tool to categorize the songs based on their lyrics. There are 1000 text fi;es each containing the lyrics of wide genre of songs. The input to the command is a  path to the directory holding the song files. The output of the command is a JSON object (sent to standard out, StdOut) that contains a list of characterizations; one for each song.Five different dimensions were tested: Kid Safe, Love, Mood, Length and Complexity for each song.
-The project contains several files like main.py, classify.py and test.py which run through a single command.
+To create a tool to categorize the songs based on their lyrics. There are 1000 text files each containing the lyrics of wide genre of music. The input to the code is a  path to the directory holding the song files. The output of the command is a JSON object (sent to standard out, StdOut) that contains a list of characterizations; one for each song. Five different dimensions were tested: Kid Safe, Love, Mood, Length and Complexity for each song.
+The project contains several files like load.py, main.py, classify.py and tests.py which run through a single command.
 
 File Details and Project Workflow:
 
@@ -32,9 +32,8 @@ Regular Expression (REGEX) is used to identify the pattern in the filename and e
 Kid_safe count is checked by matching several cuss words from a list. A count is defined based on our results.
 Similar concept is used for love_index and Mood index.
 Word count is done to find the length of each song.
-For complexity, it is not so straught forward. Textstat package was imported. A set of commonly used words were compared from the package and the lyrics of each song. If there are very few words matching, then the song obtained a higher value on the complexity index.
+For complexity, the calculations are not straught forward. Textstat package was imported. A set of commonly used words were compared from the package and the lyrics of each song. If there are very few words matching, then the song obtained a higher value on the complexity index.
 
 
 TESTS.PY
-This file contains unit tests for the overall code for the project. It tests the overall project code for correct values, missing valeus, incorrect arguments, paths, methods,classes, errors and other assertions. The code coverage for the tests can be check using coverage.py
-
+This file contains unit tests for the overall code for the project. It tests the overall project code for correct values, missing valeus, incorrect arguments, paths, methods, classes, errors and other assertions. The code coverage for the tests can be check using coverage.py
