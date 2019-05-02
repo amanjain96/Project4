@@ -1,4 +1,5 @@
 import os
+from textblob import TextBlob
 import load
 import classify
 import statistics
@@ -11,10 +12,12 @@ def main(path):
 	filename_list.sort()
 
 	total_list = []
-	for name in filename_list:
+	for name in filename_list[0:20]:
 		filepath = f"{path}/{name}"
 		lyrics = load.extract_lyrics(filepath)
-		
+		b = TextBlob(lyrics[0:100])
+		print(b.detect_language())
+
 		song_id = classify.song_id(name)
 		artist = classify.song_artist(name)
 		title = classify.song_title(name)
@@ -24,7 +27,8 @@ def main(path):
 		length_index = classify.length(lyrics)
 		complexity_index = classify.complexity(lyrics)
 
-		song_classification = {
+		if b.detect_language() == 'en':
+			song_classification = {
 								'id': song_id,
 								'artist': artist,
 								'title': title,
@@ -33,11 +37,22 @@ def main(path):
 								'mood': mood_index,
 								'length': length_index,
 								'complexity': complexity_index
-		}
+			}
+		else:
+			song_classification = {
+								'id': song_id,
+								'artist': artist,
+								'title': title,
+								'kid_safe': 0.5,
+								'love': 0.5,
+								'mood': 0.5,
+								'length': length_index,
+								'complexity': 0.5
+			}
 		
 		total_list.append(song_classification)
 	
-	classified_songs = {'characterizations': total_list[0:10]}
+	classified_songs = {'characterizations': total_list}
 
 	print(json.dumps(classified_songs, indent=4))
 
