@@ -36,3 +36,5 @@ For complexity, it is not so straught forward. Textstat package was imported. A 
 
 
 TESTS.PY
+This file contains unit tests for the overall code for the project. It tests the overall project code for correct values, missing valeus, incorrect arguments, paths, methods,classes, errors and other assertions. The code coverage for the tests can be check using coverage.py
+
