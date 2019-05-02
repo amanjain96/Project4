@@ -15,7 +15,7 @@ def main(path):
 	for name in filename_list[0:20]:
 		filepath = f"{path}/{name}"
 		lyrics = load.extract_lyrics(filepath)
-		b = TextBlob(lyrics[0:100])
+		b = TextBlob(lyrics)
 		print(b.detect_language())
 
 		song_id = classify.song_id(name)
