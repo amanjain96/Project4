@@ -11,7 +11,7 @@ def main(path):
 	filename_list.sort()
 
 	total_list = []
-	for name in filename_list[450:500]:
+	for name in filename_list[0:10]:
 		filepath = f"{path}/{name}"
 		lyrics = load.extract_lyrics(filepath)
 

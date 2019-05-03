@@ -23,7 +23,7 @@ def song_title(filename):
 	return title
 
 def song_language(lyrics):
-	b = TextBlob(lyrics)
+	b = TextBlob(lyrics[0:50])
 	return b.detect_language()
 
 def kid_safe(lyrics):
