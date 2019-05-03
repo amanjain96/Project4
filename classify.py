@@ -1,12 +1,13 @@
 import re
-import textstat
+from textblob import TextBlob
+from textstat.textstat import easy_word_set
 
 def song_id(filename):
 	pattern = re.compile(r'(\S+)~(\S+)~(\S+)[.]')
 	match = pattern.match(filename)
 	song_id = int(match.group(1))
 	return song_id
-	
+
 def song_artist(filename):
 	pattern = re.compile(r'(\S+)~(\S+)~(\S+)[.]')
 	match = pattern.match(filename)
@@ -20,6 +21,10 @@ def song_title(filename):
 	title_raw = match.group(3)
 	title = title_raw.replace('-', ' ')
 	return title
+
+def song_language(lyrics):
+	b = TextBlob(lyrics)
+	return b.detect_language()
 
 def kid_safe(lyrics):
 	kid_count = 0
@@ -61,4 +66,14 @@ def length(lyrics):
 	return length_count
 
 def complexity(lyrics):
-	return textstat.difficult_words(lyrics)
+	complexity_set = set()
+	for word in lyrics.split():
+		if word.lower() not in easy_word_set:
+			complexity_set.add(word)
+	complexity_count = len(complexity_set)
+	if complexity_count > 100:
+		return 1
+	elif complexity_count < 10:
+		return 0
+	else:
+		return round(complexity_count / 100, 1)

@@ -2,7 +2,6 @@ import os
 from textblob import TextBlob
 import load
 import classify
-import statistics
 import json
 
 def main(path):
@@ -12,22 +11,22 @@ def main(path):
 	filename_list.sort()
 
 	total_list = []
-	for name in filename_list[0:20]:
+	for name in filename_list[450:500]:
 		filepath = f"{path}/{name}"
 		lyrics = load.extract_lyrics(filepath)
-		b = TextBlob(lyrics)
-		print(b.detect_language())
 
 		song_id = classify.song_id(name)
 		artist = classify.song_artist(name)
 		title = classify.song_title(name)
-		kid_safe_index = classify.kid_safe(lyrics)
-		love_index = classify.love(lyrics)
-		mood_index = classify.mood(lyrics)
-		length_index = classify.length(lyrics)
-		complexity_index = classify.complexity(lyrics)
+		language = classify.song_language(lyrics)
 
-		if b.detect_language() == 'en':
+		if language == 'en' and lyrics != '[Instrumental]':
+			kid_safe_index = classify.kid_safe(lyrics)
+			love_index = classify.love(lyrics)
+			mood_index = classify.mood(lyrics)
+			length_index = classify.length(lyrics)
+			complexity_index = classify.complexity(lyrics)
+
 			song_classification = {
 								'id': song_id,
 								'artist': artist,
@@ -37,6 +36,17 @@ def main(path):
 								'mood': mood_index,
 								'length': length_index,
 								'complexity': complexity_index
+			}
+		elif lyrics == '[Instrumental]':
+			song_classification = {
+								'id': song_id,
+								'artist': artist,
+								'title': title,
+								'kid_safe': 0.5,
+								'love': 0.5,
+								'mood': 0.5,
+								'length': 0.5,
+								'complexity': 0
 			}
 		else:
 			song_classification = {
