@@ -5,6 +5,7 @@ This is an academic project as part of IEOR 4501: Tools for Analytics under the 
 ## Contributors
 
 Mitchell Sitzer (UNI: mts2180)
+
 Aman Jain (UNI: akj2137)
 
 ## Usage
