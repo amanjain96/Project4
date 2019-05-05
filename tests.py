@@ -26,13 +26,13 @@ class TestClassify(unittest.TestCase):
         self.assertEqual(classify.kid_safe('This is a kid friendly song with good words'),1)
 
     def test_kidsafe2(self):
-        self.assertEqual(classify.kid_safe("I am so ruined and fucked **** Life sucks"),0.6)
+        self.assertEqual(classify.kid_safe("I am so ruined, fucked  Life sucks"),0.7)
                          
     def test_love1(self):
         self.assertEqual(classify.love('This is a kid friendly song with good words'),0)
                          
     def test_love2(self):
-        self.assertEqual(classify.love('Habibi I love you, I miss you, I wanna kiss you. Oh babe'),0.5)
+        self.assertEqual(classify.love('Habibi, I love you, I miss you, I wanna kiss you. Oh babe'),0.5)
     
     def test_instrumental(self):
         lyrics = '[Instrumental]'
@@ -44,15 +44,12 @@ class TestClassify(unittest.TestCase):
 
 class TestInputOutput(unittest.TestCase):
                          
-    def test_output(self):
-        self.assertIsInstance(main('/home/akj2137/Project4/lyrics'),dict)
+#    def test_output(self):
+#        self.assertIsInstance(main('/home/akj2137/Project4/lyrics'),dict)
 
     def test_input(self):
         with self.assertRaises(TypeError):
             main.main()
-        
-        with self.assertRaises(TypeError):
-            main.main('incorrect path format')
 
 
 if __name__ == '__main__':

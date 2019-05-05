@@ -59,7 +59,7 @@ if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser(description='Classify songs by their lyrics!')
-    parser.add_argument('path', help='Please provide a path to a diretory containing lyrics files')
+    parser.add_argument('path', help='Please provide a path to a directory containing lyrics files')
     
     args = parser.parse_args()
     main(args.path)
