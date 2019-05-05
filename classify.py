@@ -1,5 +1,4 @@
 import re
-from textblob import TextBlob
 from textstat.textstat import easy_word_set
 
 def song_id(filename):
@@ -22,11 +21,9 @@ def song_title(filename):
     title = title_raw.replace('-', ' ')
     return title
 
-def song_language(lyrics):
-    b = TextBlob(lyrics)
-    return b.detect_language()
-
 def kid_safe(lyrics):
+    if lyrics == '[Instrumental]':
+        return 0.5
     kid_count = 0
     bad_words = ['***', '****', '*****', 'a**', 'ass', 'asshole', 'b****', 'bitch', 'boner', 'boob', 'boobs', 'booty', 'butt', 'butthole', 'clit', 'clitoris', 'cock', 'cocks', 'cum', 'cumming', 'cunt', 'dick', 'erotic', 'fag', 'faggot', 'fingering', 'f***', 'fuck', 'fucked', 'fucker', 'fucking', 'fucks', 'genitals', 'hooker', 'jizz', 'juggs', 'kike', 'kink', 'kinky', 'negro', 'n****', 'nigga', 'nigger', 'nipple', 'nipples', 'nude', 'nudity', 'orgasm', 'orgy', 'paedophile', 'panties', 'panty', 'pedophile', 'penis', 'pissing', 'playboy', 'porn', 'porno', 'pornography', 'pubes', 'pussy', 'rape', 'raping', 'rapist','ruined', 'semen', 'sex', 'sexy', 's***', 'shit', 'slut', 'tit', 'tits', 'titties', 'titty', 'topless', 'twat', 'vagina', 'whore', 'whores']
     for word in lyrics.split():
@@ -40,6 +37,8 @@ def kid_safe(lyrics):
         return 1 - kid_count / 10
 
 def love(lyrics):
+    if lyrics == '[Instrumental]':
+        return 0.5
     love_count = 0
     love_words = ['adorable', 'adore', 'affection', 'amour', 'angel', 'bliss', 'caring', 'chocolate', 'companion', 'compassion', 'darling', 'dear', 'desire', 'fond', 'forever','habibi', 'heart', 'husband', 'intimacy', 'intimate', 'kiss', 'kisses', 'kissing', 'love', 'lover', 'loving', 'marriage', 'married', 'marry', 'passion', 'relationship', 'romance', 'romantic', 'sex', 'sweetheart', 'tender', 'warmth', 'wife']
     for word in lyrics.split():
@@ -53,6 +52,8 @@ def love(lyrics):
         return love_count / 10
 
 def mood(lyrics):
+    if lyrics == '[Instrumental]':
+        return 0.5
     mood_count = 0
     for word in lyrics.split():
         if word.lower() in ['upbeat', 'happy', 'brilliant', 'energetic', 'enthusiastic']:
@@ -60,12 +61,21 @@ def mood(lyrics):
     return mood_count
 
 def length(lyrics):
+    if lyrics == '[Instrumental]':
+        return 0.5
     length_count = 0
     for word in lyrics.split():
         length_count += 1
-    return length_count
-
+    if length_count > 500:
+        return 1
+    elif length_count < 50:
+        return 0
+    else:
+        return round(length_count / 500, 1)
+        
 def complexity(lyrics):
+    if lyrics == '[Instrumental]':
+        return 0.5
     complexity_set = set()
     for word in lyrics.split():
         if word.lower() not in easy_word_set:
