@@ -1,13 +1,15 @@
 #This file contains the Unit-testing required to test our code
 import unittest
-
+import load
+import classify
+import main
 
 #Unit testing for non-english song
 #class TestNonEnglish(unittest.TestCase):
 #    def test_kidsafe(self):
-#    for song_id in non_english:
-#            self.assertDictEqual(song_classification,{'kid_safe':0.5,'love':0.5,'mood',0.5,'complexity':0.5})
-#    pass    
+#        for song_id in non_english:
+#            self.assertDictEqual(song_classification,{'kid_safe':0.5,'love':0.5,'mood',0.5,'complexity':0.5})    
+
 
 class TestClassify(unittest.TestCase):
 
@@ -19,42 +21,39 @@ class TestClassify(unittest.TestCase):
 
     def test_title(self):
         self.assertEqual(classify.song_title('45~Michael-Jackson~Billie-Jean'),'Billie Jean')
-
+        
     def test_kidsafe1(self):
-        self.assertEqual(classify.kid_safe('This is a kid friendly song with good words',1)
-                
-    #def test_kidsafe2(self):
-    #    self.assertEqual(classify.kid_safe("I am so ruined, fucked. **** Life sucks.",0.6)
-            
-   # def test_love1(self):
-   #     self.assertEqual(classify.love('This is a boring song',0)
+        self.assertEqual(classify.kid_safe('This is a kid friendly song with good words'),1)
 
-   # def test_love2(self):
-   #     self.assertEqual(classify.love('Habibi, I love you, I need you, I miss you,I wanna kiss you. Oh babe!',0.6)
+    def test_kidsafe2(self):
+        self.assertEqual(classify.kid_safe("I am so ruined and fucked **** Life sucks"),0.6)
+                         
+    def test_love1(self):
+        self.assertEqual(classify.love('This is a kid friendly song with good words'),0)
+                         
+    def test_love2(self):
+        self.assertEqual(classify.love('Habibi I love you, I miss you, I wanna kiss you. Oh babe'),0.5)
+    
+    def test_instrumental(self):
+        lyrics = '[Instrumental]'
+        self.assertEqual(classify.kid_safe(lyrics),0.5)
+        self.assertEqual(classify.love(lyrics),0.5)
+        self.assertEqual(classify.length(lyrics),0.5)
+        self.assertEqual(classify.mood(lyrics),0.5)
+        self.assertEqual(classify.complexity(lyrics),0.5)
 
-#class TestInputOutput(unittest.TestCase):
+class TestInputOutput(unittest.TestCase):
+                         
+    def test_output(self):
+        self.assertIsInstance(main('/home/akj2137/Project4/lyrics'),dict)
 
-   # def test_output(self):
-   #     pass
-
-   # def test_input(self):
-   #     with self.assertRaises():
-   #         main()
-
-   #     with self.assertRaises():
-   #         main('incorrect path format')
-
-
-#class TestArgeParser(unittest.TestCase):
-
-   # def test_argeparse(self):
-   #     self.assertIn('ArgumentParser', main.py)
-
-   # def test_ifname(self):
-   #     self.assertIn("if __name__ == '__main__':", main.py)
-
+    def test_input(self):
+        with self.assertRaises(TypeError):
+            main.main()
+        
+        with self.assertRaises(TypeError):
+            main.main('incorrect path format')
 
 
-#if __name__ == "__main__":
-#    unittest.main()
-
+if __name__ == '__main__':
+    unittest.main()

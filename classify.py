@@ -25,7 +25,7 @@ def kid_safe(lyrics):
     if lyrics == '[Instrumental]':
         return 0.5
     kid_count = 0
-    bad_words = ['***', '****', '*****', 'a**', 'ass', 'asshole', 'b****', 'bitch', 'boner', 'boob', 'boobs', 'booty', 'butt', 'butthole', 'clit', 'clitoris', 'cock', 'cocks', 'cum', 'cumming', 'cunt', 'dick', 'erotic', 'fag', 'faggot', 'fingering', 'f***', 'fuck', 'fucked', 'fucker', 'fucking', 'fucks', 'genitals', 'hooker', 'jizz', 'juggs', 'kike', 'kill', 'killer', 'killers', 'killing', 'kink', 'kinky', 'mothafucka', 'mothafuckas', 'mothafuckaz', 'mothafuckin', 'negro', 'n****', 'nigga', 'nigger', 'nipple', 'nipples', 'nude', 'nudity', 'orgasm', 'orgy', 'paedophile', 'panties', 'panty', 'pedophile', 'penis', 'pissing', 'playboy', 'porn', 'porno', 'pornography', 'pubes', 'pussy', 'rape', 'raping', 'rapist','ruined', 'semen', 'sex', 'sexy', 's***', 'shit', 'slave', 'slaves', 'slut', 'tit', 'tits', 'titties', 'titty', 'topless', 'twat', 'vagina', 'whore', 'whores']
+    bad_words = ['***', '****', '*****', 'a**', 'ass', 'asshole', 'b****', 'bitch', 'boner', 'boob', 'boobs', 'booty', 'butt', 'butthole', 'clit', 'clitoris', 'cock', 'cocks', 'cum', 'cumming', 'cunt', 'dick', 'erotic', 'fag', 'faggot', 'fingering', 'f***', 'fuck', 'fucked', 'fucker', 'fucking', 'fucks', 'genitals', 'hooker', 'jizz', 'juggs', 'kike', 'kill', 'killer', 'killers', 'killing', 'kink', 'kinky', 'mothafucka', 'mothafuckas', 'mothafuckaz', 'mothafuckin', 'negro', 'n****', 'nigga', 'nigger', 'nipple', 'nipples', 'nude', 'nudity', 'orgasm', 'orgy', 'paedophile', 'panties', 'panty', 'pedophile', 'penis', 'pissing', 'playboy', 'porn', 'porno', 'pornography', 'pubes', 'pussy', 'rape', 'raping', 'rapist','ruined', 'semen', 'sex', 'sexy', 's***', 'shit', 'slave', 'slaves', 'slut','sucker','sucks', 'tit', 'tits', 'titties', 'titty', 'topless', 'twat', 'vagina', 'whore', 'whores']
     for word in lyrics.split():
         if word.lower() in bad_words:
             kid_count += 1
@@ -40,7 +40,7 @@ def love(lyrics):
     if lyrics == '[Instrumental]':
         return 0.5
     love_count = 0
-    love_words = ['adorable', 'adore', 'affection', 'amour', 'angel', 'bliss', 'caring', 'chocolate', 'companion', 'compassion', 'darling', 'dear', 'desire', 'fond', 'forever','habibi', 'heart', 'husband', 'intimacy', 'intimate', 'kiss', 'kisses', 'kissing', 'love', 'lover', 'loving', 'marriage', 'married', 'marry', 'passion', 'relationship', 'romance', 'romantic', 'sex', 'sweetheart', 'tender', 'warmth', 'wife']
+    love_words = ['adorable', 'adore', 'affection', 'amour', 'angel', 'babe', 'bliss', 'caring', 'chocolate', 'companion', 'compassion', 'darling', 'dear', 'desire', 'fond', 'forever','habibi', 'heart', 'husband', 'intimacy', 'intimate', 'kiss', 'kisses', 'kissing', 'love', 'lover', 'loving', 'marriage', 'married', 'marry', 'miss', 'passion', 'relationship', 'romance', 'romantic', 'sex', 'sweetheart', 'tender', 'warmth', 'wife']
     for word in lyrics.split():
         if word.lower() in love_words:
             love_count += 1
