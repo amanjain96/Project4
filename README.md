@@ -43,7 +43,7 @@ For instrumental songs, classify.py returns a value of 0.5 for the 5 characteriz
 classify.song_id(filename)
 ```
 
-Returns the id of the song by using Regex.
+Returns the id of the song by using RegEx.
 
 #### Song Artist
 
@@ -51,7 +51,7 @@ Returns the id of the song by using Regex.
 classify.song_artist(filename)
 ```
 
-Returns the artist of the song by using Regex.
+Returns the artist of the song by using RegEx.
 
 #### Song Title
 
@@ -59,7 +59,7 @@ Returns the artist of the song by using Regex.
 classify.song_title(filename)
 ```
 
-Returns the title of the song by using Regex.
+Returns the title of the song by using RegEx.
 
 #### Characterization: Kid Safe
 

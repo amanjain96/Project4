@@ -39,7 +39,6 @@ def kid_safe(lyrics):
 def love(lyrics):
     if lyrics == '[Instrumental]':
         return 0.5
-
     love_words = ('adorable', 'adore', 'affection', 'amour', 'angel', 'babe', 'bliss', 'caring', 'chocolate', 'companion', 'compassion', 'darling', 'dear', 'desire', 'fond', 'forever','habibi', 'heart', 'husband', 'intimacy', 'intimate', 'kiss', 'kisses', 'kissing', 'love', 'lover', 'loving', 'marriage', 'married', 'marry', 'miss', 'passion', 'relationship', 'romance', 'romantic', 'sex', 'sweetheart', 'tender', 'warmth', 'wife')
     
     lyrics = set(re.findall(re.compile(r'\w+'),lyrics.lower()))
