@@ -4,17 +4,22 @@ import unittest
 
 
 #Unit testing for non-english song
+class TestNonEnglish(unittest.TestCase):
+   # def test_kidsafe(self):
+#    for song_id in non_english:
+#            self.assertDictEqual(song_classification,{'kid_safe':0.5,'love':0.5,'mood',0.5,'complexity':0.5})
+    pass    
 
 class TestClassify(unittest.TestCase):
 
     def test_id(self):
-        self.assertEqual(classify.song_id(45~Michael-Jackson~Billie-Jean),45)
+        self.assertEqual(classify.song_id('45~Michael-Jackson~Billie-Jean'),45)
 
     def test_artist(self):
-        self.assertEqual(classify.song_artist(45~Michael-Jackson~Billie-Jean),'Michael Jackson')
+        self.assertEqual(classify.song_artist('45~Michael-Jackson~Billie-Jean'),'Michael Jackson')
 
     def test_title(self):
-        self.assertEqual(classify.song_title(45~Michael-Jackson~Billie-Jean),'Billie Jean')
+        self.assertEqual(classify.song_title('45~Michael-Jackson~Billie-Jean'),'Billie Jean')
 
     def test_kidsafe1(self):
         self.assertEqual(classify.kid_safe('This is a kid friendly song with good words',1)
