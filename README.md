@@ -2,9 +2,22 @@
 
 This is an academic project as part of IEOR 4501: Tools for Analytics under the guidance of Professor Paul Logston. Our goal is to classify 1001 songs by analyzing their lyrics, which are given as text files. Song classifications are made along five dimensions: kid safeness, love, mood, length and complexity.
 
+## Contributors
+
+Mitchell Sitzer (UNI: mts2180)
+Aman Jain (UNI: akj2137)
+
 ## Usage
 
 To use this program, this repository must be cloned to a local location. Calling main.py executes all of the program logic required to classify lyrics files in a directory. A directory path must be provided as a command line argument to main.py in order for the program to execute properly.
+
+```bash
+$ git clone git@github.com:mts2180/Project4.git
+$ pip install -r requirements.txt # Install all dependencies, which for this project, is only the textstat package
+
+# To execute:
+$ python main.py <path to directory with lyrics files>/
+```
 
 ## Project Workflow
 
