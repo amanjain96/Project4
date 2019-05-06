@@ -1,8 +1,8 @@
 # This file contains the Unit-testing required to test our code
 import unittest
+import main
 import load
 import classify
-import main
 
 # Unit testing for non-english song
 # class TestNonEnglish(unittest.TestCase):
