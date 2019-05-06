@@ -2,12 +2,14 @@ import re
 from textstat.textstat import easy_word_set
 
 def song_id(filename):
+    """Extract song id."""
     pattern = re.compile(r'^(\S+)~(\S+)~(\S+)[.]*$')
     match = pattern.match(filename)
     song_id = int(match.group(1))
     return song_id
 
 def song_artist(filename):
+    """Extract song artist."""
     pattern = re.compile(r'^(\S+)~(\S+)~(\S+)[.]*$')
     match = pattern.match(filename)
     artist_raw = match.group(2)
@@ -15,6 +17,7 @@ def song_artist(filename):
     return artist
 
 def song_title(filename):
+    """Extract song title."""
     pattern = re.compile(r'^(\S+)~(\S+)~(\S+)[.]*$')
     match = pattern.match(filename)
     title_raw = match.group(3)
@@ -22,6 +25,7 @@ def song_title(filename):
     return title
 
 def kid_safe(lyrics):
+    """Find kid_safe index."""
     if lyrics == '[Instrumental]':
         return 0.5
     bad_words = ('***', '****', 'a**', 'ass', 'asshole', 'b****', 'bitch', 'boner', 'boob', 'boobs', 'booty', 'butt', 'butthole', 'clit', 'clitoris', 'cock', 'cocks', 'cum', 'cumming', 'cunt', 'dick', 'erotic', 'fag', 'faggot', 'fingering', 'f***', 'fuck', 'fucked', 'fucker', 'fucking', 'fucks', 'genitals', 'hooker', 'jizz', 'juggs', 'kike', 'kill', 'killer', 'killers', 'killing', 'kink', 'kinky', 'mothafucka', 'mothafuckas', 'mothafuckaz', 'mothafuckin', 'negro', 'n****', 'nigga', 'nigger', 'nipple', 'nipples', 'nude', 'nudity', 'orgasm', 'orgy', 'paedophile', 'panties', 'panty', 'pedophile', 'penis', 'pissing', 'playboy', 'porn', 'porno', 'pornography', 'pubes', 'pussy', 'rape', 'raping', 'rapist','ruined', 'semen', 'sex', 'sexy', 's***', 'shit', 'slave', 'slaves', 'slut','sucker','sucks', 'tit', 'tits', 'titties', 'titty', 'topless', 'twat', 'vagina', 'whore', 'whores')
@@ -37,6 +41,7 @@ def kid_safe(lyrics):
         return round(1 - kid_count / 10,1)
 
 def love(lyrics):
+    """Find love index."""
     if lyrics == '[Instrumental]':
         return 0.5
     love_words = ('adorable', 'adore', 'affection', 'amour', 'angel', 'babe', 'bliss', 'caring', 'chocolate', 'companion', 'compassion', 'darling', 'dear', 'desire', 'fond', 'forever','habibi', 'heart', 'husband', 'intimacy', 'intimate', 'kiss', 'kisses', 'kissing', 'love', 'lover', 'loving', 'marriage', 'married', 'marry', 'miss', 'passion', 'relationship', 'romance', 'romantic', 'sex', 'sweetheart', 'tender', 'warmth', 'wife')
@@ -52,6 +57,7 @@ def love(lyrics):
         return round(love_count / 10,1)
 
 def mood(lyrics):
+    """Find mood index."""
     if lyrics == '[Instrumental]':
         return 0.5
     mood_count = 5 # Mood count initialized to neutral state
@@ -70,6 +76,7 @@ def mood(lyrics):
         return round(mood_count / 10,1)
 
 def length(lyrics):
+    """Find length of song."""
     if lyrics == '[Instrumental]':
         return 0.5
     length_count = 0
@@ -85,6 +92,7 @@ def length(lyrics):
         return round(length_count / 500, 1)
         
 def complexity(lyrics):
+    """Find song complexity index."""
     if lyrics == '[Instrumental]':
         return 0.5
     complexity_set = set()
