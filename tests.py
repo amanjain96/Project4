@@ -9,7 +9,9 @@ class TestMain(unittest.TestCase):
     def test_main(self):
         path = 'lyrics'
         self.assertIsInstance(main.main(path), str)
-        self.assertEqual(main.main(path)['characterizations'][0]['id'], 0)
+        songs = main.main(path)['characterizations']
+        first_song = songs[0]
+        self.assertEqual(first_song['id'], 0)
         
 class TestClassifyMethods(unittest.TestCase):
     
