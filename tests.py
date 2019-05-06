@@ -3,12 +3,12 @@ import unittest
 import main
 import classify
 
-# Unit testing for non-english song
-# class TestNonEnglish(unittest.TestCase):
-#    def test_kidsafe(self):
-#        for song_id in non_english:
-#            self.assertDictEqual(song_classification,{'kid_safe':0.5,'love':0.5,'mood',0.5,'complexity':0.5})    
-
+class TestMain(unittest.TestCase):
+    
+    def test_main(self):
+        path = 'lyrics'
+        self.assertIsInstance(main.main(path), str)
+        
 class TestClassifyMethods(unittest.TestCase):
     
     def test_song_id(self):
@@ -42,15 +42,6 @@ class TestClassifyMethods(unittest.TestCase):
         self.assertEqual(classify.length(lyrics), 0.5)
         self.assertEqual(classify.mood(lyrics), 0.5)
         self.assertEqual(classify.complexity(lyrics), 0.5)
-
-#class TestInputOutput(unittest.TestCase):
-#    
-#    def test_output(self):
-#        self.assertIsInstance(main.main('lyrics'), str)
-#
-#    def test_input(self):
-#        with self.assertRaises(TypeError):
-#            main.main()
 
 if __name__ == '__main__':
     unittest.main()
