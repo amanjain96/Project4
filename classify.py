@@ -34,7 +34,7 @@ def kid_safe(lyrics):
     elif kid_count >= 10:
         return 0
     else:
-        return 1 - kid_count / 10
+        return round(1 - kid_count / 10,1)
 
 def love(lyrics):
     if lyrics == '[Instrumental]':
@@ -49,7 +49,7 @@ def love(lyrics):
     elif love_count >= 10:
         return 1
     else:
-        return love_count / 10
+        return round(love_count / 10,1)
 
 def mood(lyrics):
     if lyrics == '[Instrumental]':
@@ -67,7 +67,7 @@ def mood(lyrics):
     elif mood_count <= 0:
         return 0
     else:
-        return mood_count / 10
+        return round(mood_count / 10,1)
 
 def length(lyrics):
     if lyrics == '[Instrumental]':
