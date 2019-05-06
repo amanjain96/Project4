@@ -1,15 +1,14 @@
-#This file contains the Unit-testing required to test our code
+# This file contains the Unit-testing required to test our code
 import unittest
 import load
 import classify
 import main
 
-#Unit testing for non-english song
-#class TestNonEnglish(unittest.TestCase):
+# Unit testing for non-english song
+# class TestNonEnglish(unittest.TestCase):
 #    def test_kidsafe(self):
 #        for song_id in non_english:
 #            self.assertDictEqual(song_classification,{'kid_safe':0.5,'love':0.5,'mood',0.5,'complexity':0.5})    
-
 
 class TestClassify(unittest.TestCase):
 
@@ -50,7 +49,6 @@ class TestInputOutput(unittest.TestCase):
     def test_input(self):
         with self.assertRaises(TypeError):
             main.main()
-
 
 if __name__ == '__main__':
     unittest.main()
