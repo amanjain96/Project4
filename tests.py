@@ -33,6 +33,12 @@ class TestClassify(unittest.TestCase):
     def test_love2(self):
         self.assertEqual(classify.love('Habibi, I love you, I miss you, I wanna kiss you. Oh babe'),0.5)
     
+    def test_mood(self):
+        self.assertEqual(classify.mood('I am so happy and energetic but dead'),0.6)
+    
+    def test_length(self):
+        self.assertEqual(classify.length('This is a short seven word song'),0)
+
     def test_instrumental(self):
         lyrics = '[Instrumental]'
         self.assertEqual(classify.kid_safe(lyrics),0.5)

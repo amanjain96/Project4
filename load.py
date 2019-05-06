@@ -2,6 +2,7 @@
 # as a single string
 
 def extract_lyrics(path):
+    """Read the song files from the given path."""
     with open(path, 'r') as myfile:
         lyrics = myfile.read()
         return lyrics

@@ -2,12 +2,14 @@ import re
 from textstat.textstat import easy_word_set
 
 def song_id(filename):
+    """Extract song ID"""
     pattern = re.compile(r'(\S+)~(\S+)~(\S+)[.]')
     match = pattern.match(filename)
     song_id = int(match.group(1))
     return song_id
 
 def song_artist(filename):
+    """Extract song artist"""
     pattern = re.compile(r'(\S+)~(\S+)~(\S+)[.]')
     match = pattern.match(filename)
     artist_raw = match.group(2)
@@ -15,6 +17,7 @@ def song_artist(filename):
     return artist
 
 def song_title(filename):
+    """Extract song title"""
     pattern = re.compile(r'(\S+)~(\S+)~(\S+)[.]')
     match = pattern.match(filename)
     title_raw = match.group(3)
@@ -22,6 +25,7 @@ def song_title(filename):
     return title
 
 def kid_safe(lyrics):
+    """Return kid safe index"""
     if lyrics == '[Instrumental]':
         return 0.5
     kid_count = 0
@@ -39,6 +43,7 @@ def kid_safe(lyrics):
         return round(1 - kid_count / 10, 1)
 
 def love(lyrics):
+    """Return love index"""
     if lyrics == '[Instrumental]':
         return 0.5
     love_count = 0
@@ -56,6 +61,7 @@ def love(lyrics):
         return round(love_count / 10, 1)
 
 def mood(lyrics):
+    """Return mood index"""
     if lyrics == '[Instrumental]':
         return 0.5
     mood_count = 5 # Mood count initialized to neutral state
@@ -76,6 +82,7 @@ def mood(lyrics):
         return round(mood_count / 10, 1)
 
 def length(lyrics):
+    """Return length index"""
     if lyrics == '[Instrumental]':
         return 0.5
     words = re.findall(re.compile(r'\w+'), lyrics.lower())
@@ -89,6 +96,7 @@ def length(lyrics):
         return round(length_count / 500, 1)
         
 def complexity(lyrics):
+    """Return complexity index"""
     if lyrics == '[Instrumental]':
         return 0.5
     complexity_set = set()
