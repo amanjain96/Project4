@@ -73,8 +73,10 @@ def length(lyrics):
     if lyrics == '[Instrumental]':
         return 0.5
     length_count = 0
-    for word in lyrics.split():
-        length_count += 1
+
+    lyrics = re.findall(re.compile(r'\w+'),lyrics.lower()) #no set for word count
+    length_count = len(lyrics)
+    
     if length_count >= 475:
         return 1
     elif length_count <= 50:

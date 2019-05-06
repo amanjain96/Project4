@@ -43,9 +43,9 @@ class TestClassify(unittest.TestCase):
         self.assertEqual(classify.complexity(lyrics),0.5)
 
 class TestInputOutput(unittest.TestCase):
-                         
-#    def test_output(self):
-#        self.assertIsInstance(main('/home/akj2137/Project4/lyrics'),dict)
+    
+    def test_output(self):
+        self.assertIsInstance(main.main('/home/akj2137/Project4/lyrics'),str)
 
     def test_input(self):
         with self.assertRaises(TypeError):

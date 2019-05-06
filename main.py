@@ -52,8 +52,9 @@ def main(path):
         total_list.append(song_classification)
         
     classified_songs = {'characterizations': total_list}
-    
+   
     print(json.dumps(classified_songs, indent=4))
+    return json.dumps(classified_songs, indent=4)
 
 if __name__ == '__main__':
     import argparse
