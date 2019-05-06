@@ -55,7 +55,7 @@ def main(path):
     classified_songs = {'characterizations': total_list}
     
     json_output = json.dumps(classified_songs, ensure_ascii=False, indent=4)
-    print(json_output)
+#    print(json_output)
     return json_output
     
 if __name__ == '__main__':
