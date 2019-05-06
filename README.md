@@ -113,3 +113,7 @@ Returns the lyrics of each song from a given path to a flat .txt file.
 ## tests.py
 
 Contains unit tests for the overall code for the project. It tests the overall project code for correct values, missing valeus, incorrect arguments, paths, methods, classes, errors and other assertions. The code coverage for the tests can be checked using coverage.py.
+
+```bash
+$ coverage run tests.py
+$ coverage report -m
