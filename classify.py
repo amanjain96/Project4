@@ -30,7 +30,7 @@ def kid_safe(lyrics):
         return 0.5
     kid_count = 0
     bad_words = ['***', '****', 'a**', 'ass', 'asshole', 'b****', 'bitch', 'bitches', 'boner', 'boob', 'boobs', 'booty', 'butt', 'butthole', 'clit', 'clitoris', 'cock', 'cocks', 'cum', 'cumming', 'cunt', 'dick', 'erotic', 'fag', 'faggot', 'fingering', 'f***', 'fuck', 'fucked', 'fucker', 'fucking', 'fucks', 'genitals', 'hooker', 'jizz', 'juggs', 'kike', 'kill', 'killer', 'killers', 'killing', 'kink', 'kinky', 'mothafucka', 'mothafuckas', 'mothafuckaz', 'mothafuckin', 'negro', 'n****', 'nigga', 'niggas', 'nigger', 'nipple', 'nipples', 'nude', 'nudity', 'orgasm', 'orgy', 'paedophile', 'panties', 'panty', 'pedophile', 'penis', 'pissing', 'playboy', 'porn', 'porno', 'pornography', 'pubes', 'pussy', 'rape', 'raping', 'rapist','ruined', 'semen', 'sex', 'sexy', 's***', 'shit', 'slave', 'slaves', 'slut','sucker','sucks', 'tit', 'tits', 'titties', 'titty', 'topless', 'twat', 'vagina', 'whore', 'whores']
-    words = re.findall(re.compile(r'\w+'), lyrics.lower())
+    words = re.findall(re.compile(r'[\w*]+'), lyrics.lower())
     
     for word in words:
         if word in bad_words:

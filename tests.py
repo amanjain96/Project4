@@ -8,6 +8,10 @@ class TestMain(unittest.TestCase):
     def test_main(self):
         path = 'lyrics'
         self.assertIsInstance(main.main(path), str)
+    
+    def test_path_error(self):
+        with self.assertRaises(TypeError):
+            main.main()
         
 class TestClassifyMethods(unittest.TestCase):
     

@@ -4,7 +4,7 @@ import classify
 import json
 
 def main(path):
-    """The main file that triggers all other logic."""
+    """The main file that triggers all other logic"""
     filename_list = []
     for filename in os.listdir(path):
         filename_list.append(filename)
