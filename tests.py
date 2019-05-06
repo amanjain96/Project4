@@ -1,7 +1,6 @@
-# This file contains the Unit-testing required to test our code
+# This file contains the unit testing required to test our program
 import unittest
 import main
-import load
 import classify
 
 class TestMain(unittest.TestCase):
@@ -9,9 +8,6 @@ class TestMain(unittest.TestCase):
     def test_main(self):
         path = 'lyrics'
         self.assertIsInstance(main.main(path), str)
-        songs = main.main(path)['characterizations']
-        first_song = songs[0]
-        self.assertEqual(first_song['id'], 0)
         
 class TestClassifyMethods(unittest.TestCase):
     
